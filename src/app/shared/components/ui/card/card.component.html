@@ -1,0 +1,42 @@
+<div
+  class="card hover:border-mainColor hover:border transition-all duration-700 rounded-md overflow-hidden shadow relative"
+>
+  <div class="cursor-pointer" [routerLink]="['/details', product()?._id]">
+    <div class="card-img">
+      <img
+        [src]="product()?.imageCover"
+        class="w-full"
+        [alt]="product()?.title"
+      />
+    </div>
+
+    <div class="card-body px-2 py-4">
+      <h4 class="text-mainColor text-xs my-1">
+        {{ product()?.category?.name }}
+      </h4>
+      <h3 class="font-semibold my-1">
+        {{ product()?.title?.split(" ", 2)?.join(" ") }}
+      </h3>
+
+      <div class="flex justify-between">
+        <span class="text-sm"> {{ product()?.price }} EPG</span>
+        <div>
+          <i class="fas fa-star text-yellow-300"></i>
+
+          <span class="text-gray-500 text-xs"
+            >{{ product()?.ratingsAverage }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-footer">
+    <button
+      (click)="addItemToCart(product()?._id!)"
+      class="main-btn w-[90%] block mx-auto"
+    >
+      Add to Cart
+    </button>
+  </div>
+</div>
