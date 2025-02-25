@@ -1,101 +1,98 @@
 import { Routes } from '@angular/router';
-import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
-import { RegisterComponent } from './pages/register/register.component';
-import { LoginComponent } from './pages/login/login.component';
-import { BlankLayoutComponent } from './layouts/blank-layout/blank-layout.component';
-import { HomeComponent } from './pages/home/home.component';
-import { CartComponent } from './pages/cart/cart.component';
-import { ProductsComponent } from './pages/products/products.component';
-import { CategoriesComponent } from './pages/categories/categories.component';
-import { BrandsComponent } from './pages/brands/brands.component';
-import { CheckoutComponent } from './pages/checkout/checkout.component';
-import { NotfoundComponent } from './pages/notfound/notfound.component';
-import { authGuard } from './core/guards/auth.guard';
-import { logoutGuard } from './core/guards/logout.guard';
-import { DetailsComponent } from './pages/details/details.component';
-import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { authGuard } from './core/guards/auth/auth.guard';
+import { AuthComponent } from './layout/auth/auth.component';
+import { BlankComponent } from './layout/blank/blank.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: '',
-    component: AuthLayoutComponent,
+    component: AuthComponent,
     children: [
       {
-        path: 'register',
-        component: RegisterComponent,
-        title: 'Register',
-        canActivate: [logoutGuard],
-      },
-      {
         path: 'login',
-        component: LoginComponent,
-        title: 'Login',
-        canActivate: [logoutGuard],
+        loadComponent: () =>
+          import('./pages/log-in/log-in.component').then(
+            (c) => c.LogInComponent
+          ),
+        title: 'Log In',
       },
-
       {
-        path: 'forgotPassword',
-        component: ForgotPasswordComponent,
-        title: 'Reset Password',
-        canActivate: [logoutGuard],
+        path: 'register',
+        loadComponent: () =>
+          import('./pages/register/register.component').then(
+            (c) => c.RegisterComponent
+          ),
+        title: 'Register',
       },
     ],
   },
+
   {
     path: '',
-    component: BlankLayoutComponent,
+    component: BlankComponent,
     children: [
       {
         path: 'home',
-        component: HomeComponent,
+        loadComponent: () =>
+          import('./pages/home/home.component').then((c) => c.HomeComponent),
         title: 'Home',
-        canActivate: [authGuard],
-      },
-      {
-        path: 'cart',
-        component: CartComponent,
-        title: 'Cart',
-        children: [
-          {
-            path: 'checkout/:id',
-            component: CheckoutComponent,
-            title: 'Checkout',
-            canActivate: [authGuard],
-          },
-        ],
-        canActivate: [authGuard],
-      },
-      {
-        path: 'products',
-        component: ProductsComponent,
-        title: 'Products',
-        canActivate: [authGuard],
-      },
-      {
-        path: 'categories',
-        component: CategoriesComponent,
-        title: 'Categories',
-        canActivate: [authGuard],
-      },
-      {
-        path: 'brands',
-        component: BrandsComponent,
-        title: 'Brands',
-        canActivate: [authGuard],
-      },
-      {
-        path: 'details/:id',
-        component: DetailsComponent,
-        title: 'Details Product',
         canActivate: [authGuard],
       },
 
       {
-        path: '**',
-        component: NotfoundComponent,
-        title: 'Page Not Found',
+        path: 'cart',
+        loadComponent: () =>
+          import('./pages/cart/cart.component').then((c) => c.CartComponent),
+        title: 'Cart',
         canActivate: [authGuard],
+      },
+
+      {
+        path: 'products',
+        loadComponent: () =>
+          import('./pages/products/products.component').then(
+            (c) => c.ProductsComponent
+          ),
+        title: 'Products',
+        canActivate: [authGuard],
+      },
+
+      {
+        path: 'categories',
+        loadComponent: () =>
+          import('./pages/categories/categories.component').then(
+            (c) => c.CategoriesComponent
+          ),
+        title: 'Categories',
+        canActivate: [authGuard],
+      },
+
+      {
+        path: 'brands',
+        loadComponent: () =>
+          import('./pages/brands/brands.component').then(
+            (c) => c.BrandsComponent
+          ),
+        title: 'Brands',
+        canActivate: [authGuard],
+      },
+
+      {
+        path: 'payment',
+        loadComponent: () =>
+          import('./pages/payment/payment.component').then(
+            (c) => c.PaymentComponent
+          ),
+        title: 'Payment',
+        canActivate: [authGuard],
+      },
+      {
+        path: '**',
+        loadComponent: () =>
+          import('./pages/not-found/not-found.component').then(
+            (c) => c.NotFoundComponent
+          ),
       },
     ],
   },

@@ -4,12 +4,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        bgSec: "#e5e7eb",
-        mainColor: "#0aad0a",
-        hoverColor: " #15803d",
+        "bg-main": " #f0f3f2",
+        "text-main": "#0aad0a",
+      },
+      container: {
+        center: true,
       },
     },
-    container: { center: true },
   },
+
   plugins: [require("flowbite/plugin")],
 };

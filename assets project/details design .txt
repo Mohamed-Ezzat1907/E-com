@@ -1,0 +1,99 @@
+font 
+
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+	
+body {
+  font-family: "Montserrat", serif;
+}
+
+-----------------------
+Card
+
+ <div class="border border-green-400/50 rounded-md overflow-hidden shadow relative">
+      <div class="card-img">
+        <img src="/images/banner-4.jpeg" class="w-full" alt="" />
+      </div>
+      <div class="card-body px-2 py-4">
+        <h4 class="text-green-500 text-xs">category Name</h4>
+        <h3 class="font-medium">Title</h3>
+        <div class="flex justify-between items-center">
+          <span>4000 EGP</span>
+          <div class="flex items-center">
+            <i class="fas fa-star text-yellow-300"></i>
+            <span class="text-gray-500">4.5</span>
+          </div>
+        </div>
+      </div>
+    </div>
+	
+-------------------------
+Button 
+
+  <button
+        class="bg-green-600 px-6 py-2 rounded border text-white my-1 block w-[95%] mx-auto"
+      >
+        Add to cart
+      </button>
+	
+	
+	----------------------------------------
+	alert 
+	<div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+  
+  <span class="sr-only">Danger</span>
+  <div>
+  
+      <ul class="mt-1.5 list-disc list-inside">
+        <li>At least 10 characters (and up to 100 characters)</li>
+        <li>At least one lowercase character</li>
+        <li>Inclusion of at least one special character, e.g., ! @ # ?</li>
+    </ul>
+  </div>
+</div>
+
+-----------
+
+
+footer 
+
+
+<footer class="bg-gray-200 py-10">
+  <div class="w-11/12 mx-auto">
+    <h2 class="m-0 text-2xl">Get The FreshCart App</h2>
+    <p class="text-gray-500 text-sm">
+      We Will Send You a Link, Open it on Your Phone to download the app
+    </p>
+
+    <div class="flex items-center gap-3 text-nowrap">
+      <input
+        type="text"
+        class="w-full rounded-lg border-gray-300"
+        placeholder="Email"
+      />
+      <button class="btn-main">Share App Link</button>
+    </div>
+
+    <hr />
+
+    <div class="pay-details md:flex justify-between items-center my-5">
+      <div class="flex items-center gap-2">
+        <h3 class="text-sm m-0">Payment partners</h3>
+        <img src="/images/amazon-pay.png" width="50px" alt="" />
+        <img src="/images/American-Express-Color.png" width="50px" alt="" />
+        <img src="/images/paypal.png" width="50px" alt="" />
+        <img src="/images/mastercard.webp" width="50px" alt="" />
+      </div>
+
+      <div class="flex items-center gap-2">
+        <h3 class="h6 m-0">Get Deliveries with FreshCart</h3>
+        <img src="/images/get-google-play.png" width="100px" alt="" />
+        <img src="/images/get-apple-store.png" width="100px" alt="" />
+      </div>
+    </div>
+  </div>
+</footer>

@@ -26,8 +26,12 @@
       </h3>
 
       <div class="flex justify-between items-center">
-        <div class="flex flex-col items-center justify-between">
-          <span class="my-4 text-base">{{ detailsProduct.category.name }}</span>
+        <div
+          class="flex flex-col items-center justify-between dark:text-yellow-500"
+        >
+          <span class="my-4 text-base">{{
+            detailsProduct.category?.name!
+          }}</span>
           <span class="text-sm"> {{ detailsProduct.price }} EPG</span>
         </div>
 
@@ -35,7 +39,7 @@
           <div>
             <i class="fas fa-star text-yellow-300"></i>
 
-            <span class="text-gray-500 text-sm"
+            <span class="text-gray-500 text-sm mx-3 dark:text-white"
               >{{ detailsProduct.ratingsAverage }}
             </span>
           </div>

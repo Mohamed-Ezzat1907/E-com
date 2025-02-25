@@ -14,7 +14,7 @@ export class OrdersService {
   // online payment
   onLinePay(cartId: string, data: object): Observable<any> {
     return this.httpClient.post(
-      `${environment.baseUrl}/api/v1/orders/checkout-session/${cartId}?http://localhost:4200/`,
+      `${environment.baseUrl}/api/v1/orders/checkout-session/${cartId}?url=http://localhost:4200`,
       {
         shippingAddress: data,
       },

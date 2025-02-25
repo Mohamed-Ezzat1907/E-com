@@ -1,128 +1,47 @@
-<main class="px-5 py-6">
+<section>
   <div class="container">
-    <section>
-      <div class="grid md:grid-cols-[70%_minmax(0,1fr)] cursor-grab">
-        <div>
-          <owl-carousel-o [options]="mainOptions">
-            <ng-template carouselSlide>
-              <img
-                src="/images/slider-image-2.jpeg"
-                class="w-full h-[300px] block"
-                alt="cokoladni image"
-              />
-            </ng-template>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
+      @for (product of products.slice(20,40); track product._id ) {
 
-            <ng-template class="w-full" carouselSlide>
-              <img
-                src="/images/slider-image-3.jpeg"
-                class="w-full h-[300px] block"
-                alt="cokoladni image"
-              />
-            </ng-template>
-
-            <ng-template class="w-full" carouselSlide>
-              <img
-                src="/images/img1.avif"
-                class="w-full h-[300px] block"
-                alt="cokoladni image"
-              />
-            </ng-template>
-
-            <ng-template class="w-full" carouselSlide>
-              <img
-                src="/images/img2.avif"
-                class="w-full h-[300px] block"
-                alt="cokoladni image"
-              />
-            </ng-template>
-
-            <ng-template class="w-full" carouselSlide>
-              <img
-                src="/images/img3.avif"
-                class="w-full h-[300px] block"
-                alt="cokoladni image"
-              />
-            </ng-template>
-
-            <ng-template class="w-full" carouselSlide>
-              <img
-                src="/images/img4.avif"
-                class="w-full h-[300px] block"
-                alt="cokoladni image"
-              />
-            </ng-template>
-
-            <ng-template class="w-full" carouselSlide>
-              <img
-                src="/images/img5.avif"
-                class="w-full h-[300px] block"
-                alt="cokoladni image"
-              />
-            </ng-template>
-
-            <ng-template class="w-full" carouselSlide>
-              <img
-                src="/images/img6.avif"
-                class="w-full h-[300px] block"
-                alt="cokoladni image"
-              />
-            </ng-template>
-
-            <ng-template class="w-full" carouselSlide>
-              <img
-                src="/images/img7.avif"
-                class="w-full h-[300px] block"
-                alt="cokoladni image"
-              />
-            </ng-template>
-          </owl-carousel-o>
+      <div
+        class="card hover:border-green-500/50 hover:border transition-all duration-700 rounded-md overflow-hidden shadow relative"
+      >
+        <div class="card-img">
+          <img
+            [src]="product.imageCover"
+            class="w-full"
+            [alt]="product.title"
+          />
         </div>
 
-        <div>
-          <img
-            class="w-full h-[150px] block"
-            src="/images/grocery-banner-2.jpeg"
-            alt=""
-          />
-          <img
-            class="w-full h-[150px] block"
-            src="/images/grocery-banner.png"
-            alt=""
-          />
+        <div class="card-body px-2 py-4">
+          <h4 class="text-green-500 text-xs my-1">
+            {{ product.category.name }}
+          </h4>
+          <h3 class="font-semibold my-1">
+            {{ product.title.split(" ", 2).join(" ") }}
+          </h3>
+
+          <div class="flex justify-between">
+            <span class="text-sm">{{ product.price }}</span>
+            <div>
+              <i class="fas fa-star text-yellow-300"></i>
+
+              <span class="text-gray-500 text-xs">{{
+                product.ratingsAverage
+              }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <button class="btn-main w-[90%] block mx-auto">Add to Cart</button>
         </div>
       </div>
-    </section>
-
-    <section class="py-3">
-      <h2 class="mt-5 font-medium text-text-main text-xl my-3">
-        Shop Popular Categories
-      </h2>
-      <owl-carousel-o [options]="customOptions" class="cursor-grab">
-        @for (cate of categories; track cate._id) {
-        <ng-template carouselSlide>
-          <div>
-            <img
-              [src]="cate.image"
-              class="w-full h-[250px]"
-              [alt]="cate.name"
-            />
-
-            <h3 class="text-main">{{ cate.name }}</h3>
-          </div>
-        </ng-template>
-        }
-      </owl-carousel-o>
-    </section>
-
-    <section
-      class="popular-products grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-8"
-    >
-      @for (product of products.slice(0,18); track product._id) {
-
-      <app-card [product]="product"></app-card>
 
       }
-      <div [class.loader]="isLoading === true"></div>
-    </section>
+    </div>
+
+    <div [class.loader]="isLoading === true"></div>
   </div>
-</main>
+</section>

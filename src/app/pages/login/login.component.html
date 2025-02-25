@@ -1,96 +1,118 @@
 <section class="p-4">
   <div class="flex flex-col justify-center p-4">
-    <h1 class="capitalize text-3xl text-text-main font-light mb-5">
+    <h1
+      class="capitalize text-3xl text-mainColor font-light mb-5 dark:text-mainColor md:dark:hover:text-hoverColor dark:hover:text-hoverColor"
+    >
       Login now :
     </h1>
 
     <div
-      class="w-full mx-auto border border-gray-300 rounded-2xl p-8 container bg-gray-50 shadow"
+      class="w-full mx-auto border border-gray-300 rounded-2xl p-8 container bg-gray-50 shadow dark:bg-gray-900 dark:border-gray-700"
     >
       <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
-        <div class="space-y-6">
+        <div
+          class="space-y-6 grid grid-cols-[40%_minmax(0,1fr)] gap-4 items-center"
+        >
           <div>
-            <label for="email" class="text-gray-800 text-sm mb-2 block"
-              >email :</label
-            >
-            <input
-              id="email"
-              formControlName="email"
-              type="email"
-              class="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-3 rounded-md focus:ring-mainColor focus:border-mainColor"
+            <img
+              class="w-full rounded-xl"
+              src="/images/d0d9c55e-6ad4-4076-975f-4ea90bc940f2.webp"
+              alt="login"
             />
-            @if (loginForm.get("email")?.errors &&
-            loginForm.get("email")?.touched) {
-            <div
-              class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
-              role="alert"
-            >
-              <svg
-                class="shrink-0 inline w-4 h-4 me-3 mt-[2px]"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
-                />
-              </svg>
-
-              <div>
-                <ul class="mt-1.5 list-disc list-inside">
-                  @if (loginForm.get("email")?.getError("required")) {
-                  <li>Email required</li>
-                  } @if (loginForm.get("email")?.getError("email")) {
-                  <li>Invalid Email</li>
-                  }
-                </ul>
-              </div>
-            </div>
-            }
           </div>
 
           <div>
-            <label for="password" class="text-gray-800 text-sm mb-2 block"
-              >password :</label
-            >
-            <input
-              id="password"
-              formControlName="password"
-              type="password"
-              class="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-3 rounded-md focus:ring-mainColor focus:border-mainColor"
-            />
-            @if (loginForm.get("password")?.errors &&
-            loginForm.get("password")?.touched) {
-            <div
-              class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
-              role="alert"
-            >
-              <svg
-                class="shrink-0 inline w-4 h-4 me-3 mt-[2px]"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 20 20"
+            <div>
+              <label
+                for="email"
+                class="text-gray-800 text-sm mb-2 block dark:text-mainColor md:dark:hover:text-hoverColor dark:hover:text-hoverColor"
+                >email :</label
               >
-                <path
-                  d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
-                />
-              </svg>
+              <input
+                id="email"
+                formControlName="email"
+                type="email"
+                class="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-3 rounded-md focus:ring-mainColor focus:border-mainColor dark:text-white md:dark:hover:text-hoverColor dark:hover:text-hoverColor dark:bg-gray-900 dark:border-gray-700"
+              />
+              @if (loginForm.get("email")?.errors &&
+              loginForm.get("email")?.touched) {
+              <div
+                class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                role="alert"
+              >
+                <svg
+                  class="shrink-0 inline w-4 h-4 me-3 mt-[2px]"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+                  />
+                </svg>
 
-              <div>
-                <ul class="mt-1.5 list-disc list-inside">
-                  @if (loginForm.get("password")?.getError("required")) {
-                  <li>Password required</li>
-                  } @if (loginForm.get("password")?.getError("pattern")) {
-                  <li>
-                    Must be at least 6 characters and first capital letter
-                  </li>
-                  }
-                </ul>
+                <div>
+                  <ul
+                    class="mt-1.5 list-disc list-inside dark:text-yellow-500 md:dark:hover:text-hoverColor dark:hover:text-hoverColor"
+                  >
+                    @if (loginForm.get("email")?.getError("required")) {
+                    <li>Email required</li>
+                    } @if (loginForm.get("email")?.getError("email")) {
+                    <li>Invalid Email</li>
+                    }
+                  </ul>
+                </div>
               </div>
+              }
             </div>
-            }
+
+            <div>
+              <label
+                for="password"
+                class="text-gray-800 text-sm mb-2 block dark:text-mainColor md:dark:hover:text-hoverColor dark:hover:text-hoverColor dark:bg-gray-900"
+                >password :</label
+              >
+              <input
+                id="password"
+                formControlName="password"
+                type="password"
+                class="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-3 rounded-md focus:ring-mainColor focus:border-mainColor dark:text-white md:dark:hover:text-hoverColor dark:hover:text-hoverColor dark:bg-gray-900 dark:border-gray-700"
+              />
+              @if (loginForm.get("password")?.errors &&
+              loginForm.get("password")?.touched) {
+              <div
+                class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                role="alert"
+              >
+                <svg
+                  class="shrink-0 inline w-4 h-4 me-3 mt-[2px]"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+                  />
+                </svg>
+
+                <div>
+                  <ul
+                    class="mt-1.5 list-disc list-inside dark:text-yellow-500 md:dark:hover:text-hoverColor dark:hover:text-hoverColor"
+                  >
+                    @if (loginForm.get("password")?.getError("required")) {
+                    <li>Password required</li>
+                    } @if (loginForm.get("password")?.getError("pattern")) {
+                    <li>
+                      Must be at least 6 characters and first capital letter
+                    </li>
+                    }
+                  </ul>
+                </div>
+              </div>
+              }
+            </div>
           </div>
         </div>
 
@@ -113,8 +135,12 @@
           </svg>
           <span class="sr-only">Info</span>
           <div>
-            <span class="font-medium"> alert!</span> The account or password not
-            valid!
+            <span
+              class="font-medium dark:text-white md:dark:hover:text-hoverColor dark:hover:text-hoverColor"
+            >
+              alert!</span
+            >
+            The account or password not valid!
           </div>
         </div>
 
@@ -137,7 +163,10 @@
           </svg>
           <span class="sr-only">Info</span>
           <div>
-            <span class="font-medium bg-mainColor">Success alert!</span>
+            <span
+              class="font-medium py-4 bg-yellow-500 dark:text-mainColor md:dark:hover:text-white dark:hover:text-white dark:bg-gray-900"
+              >Success alert!</span
+            >
             wellcome to FreshCart.
           </div>
         </div>
@@ -148,18 +177,20 @@
           <div
             class="flex flex-col mt-1 items-center justify-center gap-3 absolute top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2"
           >
-            <p class="text-gray-800 text-sm text-center">
+            <p
+              class="text-gray-800 text-sm text-center dark:text-mainColor md:dark:hover:text-hoverColor dark:hover:text-hoverColor"
+            >
               Create an account?
               <a
                 routerLink="/register"
-                class="text-mainColor hover:text-hoverColor hover:no-underline font-semibold ml-1 cursor-pointer"
+                class="text-mainColor hover:text-hoverColor hover:no-underline font-semibold ml-1 cursor-pointer dark:text-mainColor md:dark:hover:text-hoverColor dark:hover:text-hoverColor"
                 >Register here</a
               >
             </p>
 
             <a
               routerLink="/forgotPassword"
-              class="text-mainColor hover:text-hoverColor hover:no-underline font-semibold ml-1 cursor-pointer"
+              class="text-mainColor hover:text-hoverColor hover:no-underline font-semibold ml-1 cursor-pointer dark:text-mainColor md:dark:hover:text-hoverColor dark:hover:text-hoverColor"
               >forgot password ?</a
             >
           </div>
@@ -169,10 +200,14 @@
               [disabled]="isLoading"
               [disabled]="loginForm.invalid"
               type="submit"
-              class="main-btn"
+              class="main-btn dark:text-white md:dark:hover:text-hoverColor dark:hover:text-hoverColor"
             >
               Login @if (isLoading) {
-              <span><i class="ms-3 fa-solid fa-spinner fa-spin"></i></span>
+              <span
+                ><i
+                  class="ms-3 fa-solid fa-spinner fa-spin dark:text-mainColor md:dark:hover:text-hoverColor dark:hover:text-hoverColor"
+                ></i
+              ></span>
               }
             </button>
           </div>

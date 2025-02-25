@@ -56,9 +56,6 @@ export class ForgotPasswordComponent {
           this.resetPassword.get('email')?.patchValue(userEmail);
         }
       },
-      error: (err) => {
-        console.log(err);
-      },
     });
   }
 
@@ -71,9 +68,6 @@ export class ForgotPasswordComponent {
         }
         console.log(res);
       },
-      error: (err) => {
-        console.log(err);
-      },
     });
   }
 
@@ -85,9 +79,6 @@ export class ForgotPasswordComponent {
         localStorage.setItem('userToken', res.token);
         this.authService.saveUserData();
         this.router.navigate(['/home']);
-      },
-      error: (err) => {
-        console.log(err);
       },
     });
   }

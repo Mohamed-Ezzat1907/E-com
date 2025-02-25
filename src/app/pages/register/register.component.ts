@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   AbstractControl,
   FormControl,
@@ -7,9 +7,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { AuthService } from '../../core/services/auth/auth.service';
-import { RouterLink, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Subscription } from 'rxjs';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -17,16 +16,15 @@ import { Subscription } from 'rxjs';
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })
-export class RegisterComponent implements OnDestroy {
+export class RegisterComponent {
   msgError: string = '';
 
   msgSuccess: string = '';
 
   isLoading: boolean = false;
 
-  subRegister: Subscription = new Subscription();
-
   private readonly authService = inject(AuthService);
+
   private readonly router = inject(Router);
 
   registerForm: FormGroup = new FormGroup(
@@ -36,6 +34,7 @@ export class RegisterComponent implements OnDestroy {
         Validators.minLength(3),
         Validators.maxLength(20),
       ]),
+
       email: new FormControl(null, [Validators.required, Validators.email]),
 
       password: new FormControl(null, [
@@ -53,42 +52,36 @@ export class RegisterComponent implements OnDestroy {
     { validators: [this.confirmPassword] }
   );
 
-  confirmPassword(group: AbstractControl) {
-    const password = group.get('password')?.value;
-    const rePassword = group.get('rePassword')?.value;
-
-    return password === rePassword ? null : { mismatch: true };
-  }
-
   submitForm(): void {
     if (this.registerForm.valid) {
       this.isLoading = true;
-      this.subRegister = this.authService
-        .sendRegisterForm(this.registerForm.value)
-        .subscribe({
-          next: (res) => {
-            this.isLoading = false;
+      this.authService.sendRegisterform(this.registerForm.value).subscribe({
+        next: (res) => {
+          this.isLoading = false;
 
-            if (res.message === 'success') {
-              this.msgSuccess = res.message;
-              setTimeout(() => {
-                this.router.navigate(['/login']);
-              }, 500);
-            }
-            console.log(res);
-          },
-          error: (err: HttpErrorResponse) => {
-            console.log(err);
-            this.msgError = err.error.message;
-            this.isLoading = false;
-          },
-        });
+          if (res.message === 'success') {
+            this.msgSuccess = res.message;
+            setTimeout(() => {
+              this.router.navigate(['/login']);
+            }, 500);
+          }
+          // console.log(res);
+        },
+        error: (err: HttpErrorResponse) => {
+          // console.log(err);
+          this.msgError = err.error.message;
+          this.isLoading = false;
+        },
+      });
     } else {
       this.registerForm.markAllAsTouched();
     }
   }
 
-  ngOnDestroy(): void {
-    this.subRegister.unsubscribe();
+  confirmPassword(form: AbstractControl) {
+    const password = form.get('password')?.value;
+    const rePassword = form.get('rePassword')?.value;
+
+    return password === rePassword ? null : { mismatch: true };
   }
 }

@@ -56,9 +56,6 @@ export class DetailsComponent implements OnInit, OnDestroy {
             next: (res) => {
               this.detailsProduct = res.data;
             },
-            error: (err) => {
-              console.log(err);
-            },
           });
       },
     });
@@ -71,9 +68,6 @@ export class DetailsComponent implements OnInit, OnDestroy {
           this.toastrService.success(res.message, 'Cart Operation!');
         }
       },
-      error: (err) => {
-        console.log(err);
-      },
     });
   }
 
@@ -81,9 +75,6 @@ export class DetailsComponent implements OnInit, OnDestroy {
     this.cartService.getUserCart().subscribe({
       next: (res) => {
         this.cartDetails = res.data;
-      },
-      error: (err) => {
-        console.log(err);
       },
     });
   }

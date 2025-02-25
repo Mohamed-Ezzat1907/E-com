@@ -1,11 +1,13 @@
-import { Component, inject, input, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {
   FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { OrdersService } from '../../core/services/orders/orders.service';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-checkout',
@@ -13,18 +15,22 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.scss',
 })
-export class CheckoutComponent implements OnInit {
+export class CheckoutComponent {
+  private readonly ordersService = inject(OrdersService);
   private readonly activatedRoute = inject(ActivatedRoute);
+  private readonly toastrService = inject(ToastrService);
 
-  idCart: string = '';
+  idCart: string = localStorage.getItem('cartId')!;
   isLoading: boolean = false;
-  pay = input.required<number>();
 
-  ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe((param) => {
-      this.idCart = param.get('id')!;
-    });
-  }
+  // ngOnInit(): void {
+  //   this.catId();
+  // }
+  // catId(): void {
+  //   this.activatedRoute.paramMap.subscribe((param) => {
+  //     this.idCart = param.get('id')!;
+  //   });
+  // }
 
   checkoutForm: FormGroup = new FormGroup({
     details: new FormControl(null, [Validators.required]),
@@ -35,5 +41,16 @@ export class CheckoutComponent implements OnInit {
     city: new FormControl(null, [Validators.required]),
   });
 
-  submitForm(): void {}
+  submitForm(): void {
+    this.ordersService
+      .onLinePay(this.idCart, this.checkoutForm.value)
+      .subscribe({
+        next: (res) => {
+          if (res.status === 'success') {
+            this.toastrService.success('Complete the Payment Process');
+            window.open(res.session.url, '_self');
+          }
+        },
+      });
+  }
 }

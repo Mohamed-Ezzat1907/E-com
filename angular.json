@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "E-Commerce-App": {
+    "E-commerce-App": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -31,8 +31,7 @@
             ],
             "styles": [
               "./node_modules/@fortawesome/fontawesome-free/css/all.min.css",
-              "src/styles.scss",
-              "node_modules/ngx-toastr/toastr.css"
+              "src/styles.scss"
             ],
             "scripts": [
               "./node_modules/@fortawesome/fontawesome-free/js/all.min.js",
@@ -49,8 +48,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2MB",
-                  "maximumError": "4MB"
+                  "maximumWarning": "2mb",
+                  "maximumError": "4mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -72,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "E-Commerce-App:build:production"
+              "buildTarget": "E-commerce-App:build:production"
             },
             "development": {
-              "buildTarget": "E-Commerce-App:build:development"
+              "buildTarget": "E-commerce-App:build:development"
             }
           },
           "defaultConfiguration": "development"
